@@ -21,8 +21,8 @@ form.addEventListener('submit', async (evento) => {
   evento.preventDefault();
   mensagemErro.textContent = '';
 
-  const usuario = document.getElementById('usuario').value;
-  const senha = document.getElementById('senha').value;
+  const usuario = document.getElementById('usuario').value.trim();
+  const senha = document.getElementById('senha').value.trim();
 
   const resposta = await fetch('/api/auth/login', {
     method: 'POST',
