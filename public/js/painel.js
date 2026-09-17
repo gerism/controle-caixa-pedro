@@ -109,4 +109,32 @@ document.getElementById('btn-sair').addEventListener('click', async () => {
   window.location.href = '/login.html';
 });
 
+// Trocar senha
+const formSenha = document.getElementById('form-senha');
+const mensagemSenha = document.getElementById('mensagem-senha');
+
+formSenha.addEventListener('submit', async (evento) => {
+  evento.preventDefault();
+  mensagemSenha.textContent = '';
+  mensagemSenha.style.color = '';
+
+  const senhaAtual = document.getElementById('senha-atual').value.trim();
+  const novaSenha = document.getElementById('senha-nova').value.trim();
+
+  const resposta = await fetch('/api/auth/trocar-senha', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ senhaAtual, novaSenha }),
+  });
+
+  if (resposta.ok) {
+    formSenha.reset();
+    mensagemSenha.style.color = '#2E6B4F';
+    mensagemSenha.textContent = 'Senha alterada com sucesso.';
+  } else {
+    const dados = await resposta.json().catch(() => ({}));
+    mensagemSenha.textContent = dados.erro || 'Não foi possível trocar a senha';
+  }
+});
+
 checarLogin().then(atualizarTudo);

@@ -47,4 +47,34 @@ router.get('/me', exigirLogin, (req, res) => {
   res.json({ usuario: req.usuario.usuario });
 });
 
+// Troca a própria senha (precisa confirmar a senha atual)
+router.post('/trocar-senha', exigirLogin, async (req, res) => {
+  const { senhaAtual, novaSenha } = req.body;
+
+  if (!senhaAtual || !novaSenha) {
+    return res.status(400).json({ erro: 'Informe a senha atual e a nova senha' });
+  }
+  if (novaSenha.length < 4) {
+    return res.status(400).json({ erro: 'A nova senha deve ter pelo menos 4 caracteres' });
+  }
+
+  const resultado = await pool.query(
+    'SELECT senha_hash FROM usuarios WHERE id = $1',
+    [req.usuario.id]
+  );
+  const linha = resultado.rows[0];
+
+  if (!linha || !(await bcrypt.compare(senhaAtual, linha.senha_hash))) {
+    return res.status(401).json({ erro: 'Senha atual incorreta' });
+  }
+
+  const novoHash = await bcrypt.hash(novaSenha, 10);
+  await pool.query('UPDATE usuarios SET senha_hash = $1 WHERE id = $2', [
+    novoHash,
+    req.usuario.id,
+  ]);
+
+  res.json({ ok: true });
+});
+
 module.exports = router;

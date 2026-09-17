@@ -81,6 +81,23 @@
       </div>
     </div>
 
+    <!-- Trocar senha -->
+    <div class="cartao" style="margin-bottom: 24px;">
+      <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">Trocar senha</div>
+      <form id="form-senha">
+        <div class="campo">
+          <label for="senha-atual">Senha atual</label>
+          <input id="senha-atual" type="password" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+        </div>
+        <div class="campo">
+          <label for="senha-nova">Nova senha</label>
+          <input id="senha-nova" type="password" autocomplete="new-password" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+        </div>
+        <button type="submit" class="btn-primario" style="width: 100%;">Salvar nova senha</button>
+        <div id="mensagem-senha" class="erro"></div>
+      </form>
+    </div>
+
     <!-- Lista de hoje -->
     <div class="cartao">
       <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">Lançamentos de hoje</div>
