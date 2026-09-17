@@ -1,0 +1,42 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #F6F3EC;
+  color: #221F17;
+}
+button { font-family: inherit; cursor: pointer; }
+input, select { font-family: inherit; }
+
+.btn-primario {
+  border: none;
+  background: #2E6B4F;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 0;
+  border-radius: 12px;
+}
+.btn-primario:disabled { opacity: 0.6; cursor: default; }
+
+.cartao {
+  background: #FFFFFF;
+  border: 1px solid #EAE4D6;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.campo { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.campo label { font-size: 13px; color: #8A8272; }
+.campo input, .campo select {
+  border: 1px solid #DED5C0;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #221F17;
+}
+
+.erro { color: #B4432E; font-size: 14px; margin-top: 8px; }
+.entrada-cor { color: #2E6B4F; }
+.saida-cor { color: #B4432E; }

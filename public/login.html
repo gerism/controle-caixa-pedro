@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle Caixa Pedro — Entrar</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <form id="form-login" class="cartao" style="width: 100%; max-width: 340px;">
+      <h1 style="font-size: 20px; margin: 0 0 20px;">Controle Caixa Pedro</h1>
+
+      <div class="campo">
+        <label for="usuario">Usuário</label>
+        <input id="usuario" name="usuario" type="text" autocomplete="username" required>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input id="senha" name="senha" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button type="submit" class="btn-primario" style="width: 100%;">Entrar</button>
+      <div id="mensagem-erro" class="erro"></div>
+    </form>
+  </div>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>
